@@ -6,12 +6,15 @@ import { fetchDataFromApi } from './helper/axiosHelper';
 function App() {
   const [dataFromApi, setDataFromApi] = useState([])
   useEffect(() => {
-    fetchDataFromApi()
-  })
+    fetchDataFromApi().then(data => {
+      setDataFromApi(data)
+    })
+  }, [])
   return (
     <div className="App">
-      React fetch API
-
+      {dataFromApi.map((individualData, index) => (
+        individualData.domains
+      ))}
     </div>
   );
 }
