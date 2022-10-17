@@ -1,0 +1,13 @@
+what needs to be done 
+{
+    display a table 
+    have three buttons
+    LOAD button to load data
+    DELETE to delete the last item
+    ADD to insert the first item to the last
+}
+
+how could be done
+{ 
+    fetch the data and check information
+}
