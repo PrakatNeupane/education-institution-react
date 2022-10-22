@@ -11,15 +11,20 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function App() {
   const [dataFromApi, setDataFromApi] = useState([])
+  const [displayData, setDisplayData] = useState([])
 
   const handleOnLoad = () => {
     fetchDataFromApi().then(data => {
       setDataFromApi(data)
+      setDisplayData(data)
     })
+    console.log(dataFromApi)
   }
 
   const handleOnDelete = () => {
-
+    dataFromApi.pop()
+    console.log(dataFromApi)
+    setDisplayData([...dataFromApi])
   }
 
   const handleOnAdd = () => {
@@ -29,10 +34,10 @@ function App() {
   return (
     <div className="App">
 
-      <div>
-        <Button className='btn btn-primary' onClick={handleOnLoad}>LOAD</Button>
-        <Button className='btn btn-danger'>DELETE</Button>
-        <Button className='btn btn-info'>ADD</Button>
+      <div className='buttons'>
+        <Button className='btn btn-primary me-1' onClick={handleOnLoad}>LOAD</Button>
+        <Button className='btn btn-danger me-1' onClick={handleOnDelete}>DELETE</Button>
+        <Button className='btn btn-info' onClick={handleOnAdd}>ADD</Button>
       </div>
 
       <Table striped bordered hover>
@@ -46,7 +51,7 @@ function App() {
         </thead>
         <tbody>
 
-          {dataFromApi.map((item, i) => (
+          {displayData.map((item, i) => (
             <tr key={item._id}>
               <td>{i + 1}</td>
               <td>{item.name}</td>
