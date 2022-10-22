@@ -1,5 +1,4 @@
-
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { fetchDataFromApi } from './helper/axiosHelper';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,11 +11,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function App() {
   const [dataFromApi, setDataFromApi] = useState([])
-  // useEffect(() => {
-  //   fetchDataFromApi().then(data => {
-  //     setDataFromApi(data)
-  //   })
-  // }, [])
 
   const handleOnLoad = () => {
     fetchDataFromApi().then(data => {
@@ -34,7 +28,6 @@ function App() {
 
   return (
     <div className="App">
-
 
       <div>
         <Button className='btn btn-primary' onClick={handleOnLoad}>LOAD</Button>
@@ -57,7 +50,7 @@ function App() {
             <tr key={item._id}>
               <td>{i + 1}</td>
               <td>{item.name}</td>
-              <td>{item.web_pages}</td>
+              <td><a href={item.web_pages[0]} target='none'>{item.web_pages[0]}</a></td>
               <td>{item.country}</td>
             </tr>
           ))}
