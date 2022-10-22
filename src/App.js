@@ -52,31 +52,15 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            {dataFromApi.map((individualData, index) => {
-              return (
-                <div>
-                  <td>{index + 1}</td>
-                  <td>{individualData.name}</td>
-                  <td>{individualData.web_pages}</td>
-                  <td>{individualData.country}</td>
-                </div>
-              )
-            }
-            )}
 
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {dataFromApi.map((item, i) => (
+            <tr key={item._id}>
+              <td>{i + 1}</td>
+              <td>{item.name}</td>
+              <td>{item.web_pages}</td>
+              <td>{item.country}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
