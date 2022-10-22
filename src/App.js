@@ -18,17 +18,16 @@ function App() {
       setDataFromApi(data)
       setDisplayData(data)
     })
-    console.log(dataFromApi)
   }
 
   const handleOnDelete = () => {
     dataFromApi.pop()
-    console.log(dataFromApi)
     setDisplayData([...dataFromApi])
   }
 
   const handleOnAdd = () => {
-
+    dataFromApi.push(dataFromApi[0])
+    setDisplayData([...dataFromApi])
   }
 
   return (
