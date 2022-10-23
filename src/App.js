@@ -7,15 +7,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import DisplayTable from './components/DisplayTable';
+import Spin from './components/Spin';
 
 function App() {
   const [dataFromApi, setDataFromApi] = useState([])
   const [displayData, setDisplayData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleOnLoad = () => {
+    setIsLoading(true)
     fetchDataFromApi().then(data => {
       setDataFromApi(data)
       setDisplayData(data)
+      setIsLoading(false)
     })
   }
 
@@ -31,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      {isLoading && <Spin />}
       <DisplayTable handleOnAdd={handleOnAdd} handleOnDelete={handleOnDelete} handleOnLoad={handleOnLoad} displayData={displayData} />
     </div>
   );
